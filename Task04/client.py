@@ -38,7 +38,7 @@ def msg_to_be_sent(msg):
 
 
 while True:
-    inpt = input("Enter something ")
+    inpt = input("Enter number of hours worked: ")
     if inpt == "Done":
         msg_to_be_sent(disconnected)
         break

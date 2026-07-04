@@ -46,18 +46,15 @@ def handle_clients(conn, addr):
             else:
                 # print(msg)
                 # conn.send("I have received your message".encode(format))
-                vowels = "aeiouAEIOU"
-                total = 0
-                for i in msg:
-                    if i in vowels:
-                        total += 1
-                if total == 0:
-                    conn.send("Not enough vowels".encode(format))
-                elif total <= 2:
-                    conn.send("Enough".encode(format))
+                number = int(msg)
+                
+                if number <= 40 and number >= 0:
+                    salary = number * 200
+                    
                 else:
-                    conn.send("Too many".encode(format))
-
+                    salary = 8000 + (number - 40) * 300
+                    
+                conn.send(f"Your salary is Tk {salary}".encode(format))
 
     conn.close()
     print("Connection closed with", addr)
