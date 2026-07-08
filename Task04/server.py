@@ -1,5 +1,4 @@
 import socket
-import threading
 
 
 port = 5050
@@ -17,14 +16,14 @@ server.bind(server_socket_address)
 server.listen()
 print("Server is listening")
 
-port = 5050
+
 buffer = 16
 format = "utf-8"
 disconnected = "End"
 
 
-def handle_clients(conn, addr):
-    # conn, addr = server.accept()
+while True:
+    conn, addr = server.accept()
     print("Connected to", addr)
     connected = True
 
@@ -48,18 +47,13 @@ def handle_clients(conn, addr):
                 # conn.send("I have received your message".encode(format))
                 number = int(msg)
                 
-                if number <= 40 and number >= 0:
+                if number <= 40:
                     salary = number * 200
                     
                 else:
-                    salary = 8000 + (number - 40) * 300
+                    salary = 8000 + ((number - 40) * 300)
                     
                 conn.send(f"Your salary is Tk {salary}".encode(format))
 
     conn.close()
     print("Connection closed with", addr)
-
-while True:
-    conn, addr = server.accept()
-    thread = threading.Thread(target = handle_clients, args = (conn, addr))
-    thread.start()

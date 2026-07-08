@@ -13,7 +13,7 @@ client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect(server_socket_address)
 
 
-port = 5050
+
 format = "utf-8"
 buffer = 16
 disconnected = "End"

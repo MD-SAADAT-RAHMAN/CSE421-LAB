@@ -17,7 +17,6 @@ server.bind(server_socket_address)
 server.listen()
 print("Server is listening")
 
-port = 5050
 buffer = 16
 format = "utf-8"
 disconnected = "End"
