@@ -10,10 +10,10 @@ server_socket_address = (host_ip, port)
 
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server.bind(server_socket_address)
+server.bind(server_socket_address) # attaches the socket to the chosen IP and port
 
 
-server.listen()
+server.listen() # puts the socket in listening mode
 print("Server is listening")
 
 
@@ -23,7 +23,7 @@ disconnected = "End"
 
 
 while True:
-    conn, addr = server.accept()
+    conn, addr = server.accept() # waits client and creates a new connection socket, aikhane conn socket and addr hocche address of client
     print("Connected to", addr)
     connected = True
 
@@ -33,7 +33,7 @@ while True:
         print("Length of the message is", message_length)
 
 
-        if message_length:
+        if message_length: #  makes sure something was received
             message_length = int(message_length)
             msg = conn.recv(message_length).decode(format)
             

@@ -3,14 +3,13 @@ import socket
 
 port = 5050
 hostname = socket.gethostname()
-host_ip = socket.gethostbyname(hostname)
+host_ip = socket.gethostbyname(hostname) # convert hostname to IPv4 address into string format
 
 
-server_socket_address = (host_ip, port)
+server_socket_address = (host_ip, port) # create a tuple of the server socket address as its using server port number
 
-
-client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client.connect(server_socket_address)
+client = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # create a socket object for the client using IPv4 and TCP protocol
+client.connect(server_socket_address) #connects the client to the server
 
 
 
@@ -20,8 +19,8 @@ disconnected = "End"
 
 
 def msg_to_be_sent(msg):
-    message = msg.encode(format)
-    msg_length = len(message)
+    message = msg.encode(format) # converts text into bytes
+    msg_length = len(message) # counts how many bytes the message has
     msg_length = str(msg_length).encode(format)
     msg_length += b" " * (buffer-len(msg_length))
 
